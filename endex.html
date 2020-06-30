@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1></h1>
+   
+   <script>
+       const h1=document.querySelector('h1');
+       dateFuture = new Date(2020,7,5,23,59,59);
+        
+        function GetCount(){
+        
+            const date= new Date();
+            
+             let   leftDay = dateFuture.getTime() - date.getTime();                
+    
+        
+        
+                
+                if(leftDay < 0){
+                        document.getElementById('countbox').innerHTML="Now!";
+                }
+                
+                else{
+                		
+                     let   days=0;  let message="";
+        
+                        leftDay = Math.floor(leftDay/1000);
+        
+                        days=Math.floor(leftDay/86400);
+                        leftDay=leftDay%86400;
+                        
+        
+                        if(days != 0){message += days-(date.getDate()) +" day"+((days!=1)?"s":"")+",<br />";}
+    
+                        h1.innerHTML=message;
+        
+                        setTimeout("GetCount()", 1000);
+                }
+        }
+        
+        window.onload=function(){GetCount();}
+
+   </script>
+</body>
+</html>
